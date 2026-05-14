@@ -6,10 +6,12 @@ function initScrollAnimations() {
     const fadeElements = document.querySelectorAll('.fade-in');
     
     // 配置 Intersection Observer
+    // 在移动端减少 rootMargin 触发的阈值，确保更容易进入视窗触发动画
+    const isMobile = window.innerWidth <= 768;
     const observerOptions = {
-        root: null, // 使用视口作为根
-        rootMargin: '0px 0px -50px 0px', // 提前 50px 触发动画
-        threshold: 0 // 只要元素边界进入视口就触发
+        root: null, 
+        rootMargin: isMobile ? '0px 0px 0px 0px' : '0px 0px -50px 0px', 
+        threshold: 0 
     };
     
     // 创建 Observer

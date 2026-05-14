@@ -99,6 +99,42 @@ body {
     .portfolio-container {
         box-shadow: none;
     }
+    
+    /* 缩小移动端滑动触发动画的位移，防止动画幅度显得过于夸张 */
+    .fade-in {
+        transform: translateY(15px);
+    }
+    .interactive-card.fade-in {
+        transform: scale(1) translateY(15px);
+    }
+    
+    /* 为飘落动画增加移动端对应的较小幅度关键帧 */
+    .falling-petal {
+        animation: petal-fall-mobile 4s linear infinite;
+    }
+}
+
+@keyframes petal-fall-mobile {
+    0% {
+        opacity: 0;
+        transform: translate(0, -5px) rotate(-10deg);
+    }
+    15% {
+        opacity: 1;
+        transform: translate(-15px, 20px) rotate(10deg);
+    }
+    25% {
+        opacity: 1;
+        transform: translate(-25px, 35px) rotate(2deg);
+    }
+    45% {
+        opacity: 0;
+        transform: translate(-50px, 80px) rotate(-10deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-100px, 175px) rotate(15deg);
+    }
 }
 
 /* ========================================
