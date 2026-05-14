@@ -1,0 +1,419 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f5f5f5; /* 假设背景是浅灰色，视设计稿而定，也可以是白色 */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #333;
+}
+
+.portfolio-container {
+    max-width: 1440px; /* 大屏幕的最大宽度，视设计稿而定，一般不希望图片拉得无限大 */
+    margin: 0 auto;    /* 居中显示 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05); /* 添加一些阴影使整体看起来更好 */
+    overflow-x: hidden; /* 防止因为超出的图片撑出水平系统滚动条，如果需要横向滚动可以改为 auto/scroll，通常作品集展示倾向于直接截断隐藏 */
+}
+
+/* 默认图片宽度占据 100%，以保证拼接没有缝隙 */
+.full-img {
+    width: 100%;
+    display: block; /* 消除 img 的底部默认间隙 */
+}
+
+.portfolio-container > div {
+    width: 100%;
+}
+
+/* 防止带链接的 13 图下方有间隙 */
+.link-container a {
+    display: block;
+    width: 100%;
+    cursor: pointer;
+}
+.link-container img {
+    width: 100%;
+    display: block;
+    transition: opacity 0.3s ease;
+}
+.link-container img:hover {
+    opacity: 0.9;
+}
+
+
+/* 03.png 上的四个彩色文件夹覆盖层 */
+.relative-container {
+    position: relative;
+    width: 100%;
+    display: block;
+}
+
+.overlay-cards {
+    position: absolute;
+    /* top 控制文件夹垂直位置，已根据用户建议调整到 78% */
+    top: 78%; 
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center; /* 居中对齐 */
+    align-items: center;
+    gap: 1.5%; /* 卡片间距 */
+    transform: translateY(-50%);
+    padding: 0 4%; /* 两侧的安全边距 */
+}
+
+.interactive-card {
+    width: 23%; /* 卡片宽度比例 */
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.interactive-card:hover {
+    transform: scale(1.05); /* 悬停微放大 */
+    z-index: 10;
+    position: relative;
+}
+
+/* 响应式设计 */
+
+/* 平板端 (768px - 1199px) */
+@media (max-width: 1199px) {
+    .overlay-cards {
+        gap: 1%;
+        padding: 0 2%;
+    }
+    .interactive-card {
+        width: 24%;
+    }
+}
+
+/* 手机端 (<768px) */
+@media (max-width: 767px) {
+    .portfolio-container {
+        box-shadow: none;
+    }
+}
+
+/* ========================================
+   滑动隐藏滚动条
+   ======================================== */
+.scrollable-h5-wrapper {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+}
+.scrollable-h5-wrapper::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+}
+
+/* ========================================
+   第 07 页：H5 卡片横向排列与动效
+   ======================================== */
+
+.h5-cards-wrapper {
+    position: absolute;
+    /* 采用百分比确保纵向响应式位置依然准确：3069px / 4255px ≈ 72.127% */
+    top: 72.127%;
+    left: 50%;
+    transform: translateX(-50%); /* 确保中间的图在正中间 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* 布局总宽 2700px，底图宽 2400px，所以包装器宽度为 2700/2400 = 112.5% */
+    width: 112.5%;
+    /* 间距相对于 2700px 的比例：50 / 2700 = 1.85185% */
+    gap: 1.85185%;
+    padding: 0;
+}
+
+.h5-card {
+    /* 单张图 500px，相对于 2700px 宽度的比例：500 / 2700 = 18.5185% */
+    flex: 0 0 18.5185%;
+    width: 18.5185%;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.h5-card:hover {
+    transform: scale(1.05); /* 悬停微放大 */
+    z-index: 10;
+    position: relative;
+}
+
+/* 覆盖 h5-card 的 fade-in transform，使其初始偏下 */
+.h5-card.fade-in {
+    transform: scale(1) translateY(30px);
+}
+.h5-card.fade-in.visible {
+    transform: scale(1) translateY(0);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.h5-card.fade-in.visible:hover {
+    transform: scale(1.05);
+}
+
+/* 通用鼠标悬停放大效果 */
+.hover-zoom-img {
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    display: block;
+}
+.hover-zoom-img:hover {
+    transform: scale(1.02);
+}
+
+/* 鼠标悬停向上移动效果（02-1标签专属） */
+.hover-lift-img {
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    pointer-events: auto; /* 覆盖父级的 pointer-events: none 以响应鼠标 */
+}
+.hover-lift-img:hover {
+    transform: translateY(-8px); /* 进一步减小悬停浮动幅度为 8px */
+}
+
+/* ========================================
+   企鹅摇摆动效
+   ======================================== */
+
+.penguin-wrapper {
+    position: absolute;
+    z-index: 10;
+}
+
+.floating-penguin {
+    display: block;
+    animation: gentle-sway 2.5s ease-in-out infinite;
+    transform-origin: bottom center; /* 让摇晃以企鹅底部为轴，显得更自然 */
+}
+
+@keyframes gentle-sway {
+    0%, 100% { transform: rotate(0deg); }
+    25%      { transform: rotate(2deg); }
+    75%      { transform: rotate(-2deg); }
+}
+
+/* ========================================
+   图表放射出现动效
+   ======================================== */
+
+.chart-reveal-left {
+    clip-path: inset(0 0 0 100%);
+}
+
+.chart-reveal-right {
+    clip-path: inset(0 100% 0 0);
+}
+
+.chart-reveal-bottom {
+    clip-path: inset(100% 0 0 0);
+}
+
+.chart-reveal-top {
+    clip-path: inset(0 0 100% 0);
+}
+
+/* 因为 05 的外层容器带有 fade-in，如果我们用外层触发，那滚动到 05 顶部动画就跑了。
+   所以我们把 fade-in 加到图表 wrapper 自己身上，这样用户滑到 wrapper 时才触发。
+   同时我们要去掉 fade-in 默认的位移和透明度效果，只让它充当 JS 触发器的作用 */
+
+.charts-wrapper.fade-in, .chart3-wrapper.fade-in, .text-h5-wrapper.fade-in, .chart10-wrapper.fade-in, .chart12-wrapper.fade-in, .chart12-progress-wrapper.fade-in, .chart14-wrapper.fade-in, .chart21-wrapper.fade-in, .chart26-wrapper.fade-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+}
+.charts-wrapper.fade-in.visible, .chart3-wrapper.fade-in.visible, .text-h5-wrapper.fade-in.visible, .chart10-wrapper.fade-in.visible, .chart12-wrapper.fade-in.visible, .chart12-progress-wrapper.fade-in.visible, .chart14-wrapper.fade-in.visible, .chart21-wrapper.fade-in.visible, .chart26-wrapper.fade-in.visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* 当父层进入视口时才应用动画，这样每次重新进入都会重头播放 */
+.charts-wrapper.fade-in.visible .chart-reveal-left,
+.chart14-wrapper.fade-in.visible .chart-reveal-left {
+    animation: reveal-from-right-to-left 0.6s ease-in-out forwards;
+}
+
+.charts-wrapper.fade-in.visible .chart-reveal-right,
+.chart3-wrapper.fade-in.visible .chart-reveal-right,
+.text-h5-wrapper.fade-in.visible .chart-reveal-right,
+.chart12-progress-wrapper.fade-in.visible .chart-reveal-right,
+.chart14-wrapper.fade-in.visible .chart-reveal-right {
+    animation: reveal-from-left-to-right 0.6s ease-in-out forwards;
+}
+
+.chart10-wrapper.fade-in.visible .chart-reveal-bottom {
+    animation: reveal-from-bottom-to-top 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+.chart12-wrapper.fade-in.visible .chart-reveal-top,
+.chart21-wrapper.fade-in.visible .chart-reveal-top,
+.chart26-wrapper.fade-in.visible .chart-reveal-top {
+    animation: reveal-from-top-to-bottom 0.6s ease-in-out forwards;
+}
+
+/* 从右往左拉开遮罩（左侧图表） */
+@keyframes reveal-from-right-to-left {
+    0% {
+        clip-path: inset(0 0 0 100%);
+    }
+    100% {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+/* 从左往右拉开遮罩（右侧图表） */
+@keyframes reveal-from-left-to-right {
+    0% {
+        clip-path: inset(0 100% 0 0);
+    }
+    100% {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+/* 从下往上拉开遮罩 */
+@keyframes reveal-from-bottom-to-top {
+    0% {
+        clip-path: inset(100% 0 0 0);
+    }
+    100% {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+/* 从上往下拉开遮罩 */
+@keyframes reveal-from-top-to-bottom {
+    0% {
+        clip-path: inset(0 0 100% 0);
+    }
+    100% {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+/* ========================================
+   呼吸动效 (摇曳摆动 + 微缩放)
+   ======================================== */
+.flower-sway {
+    animation: sway 3.5s ease-in-out infinite;
+    transform-origin: bottom center; /* 以花茎底部为轴摇摆，更自然 */
+}
+
+@keyframes sway {
+    0%, 100% {
+        transform: rotate(-1.5deg) scale(1);
+    }
+    50% {
+        transform: rotate(1.5deg) scale(1.02);
+    }
+}
+
+/* ========================================
+   飘落动效 (淡入淡出 + 下落摇摆)
+   ======================================== */
+.falling-petal {
+    /* 改用 linear 匀速运动，彻底消除在每个关键帧定点减速的停顿感 */
+    animation: petal-fall 4s linear infinite;
+}
+
+@keyframes petal-fall {
+    0% {
+        opacity: 0;
+        transform: translate(0, -10%) rotate(-10deg);
+    }
+    15% {
+        opacity: 1;
+        transform: translate(-40%, 30%) rotate(10deg);
+    }
+    37.5% {
+        opacity: 1;
+        transform: translate(-100%, 90%) rotate(-5deg);
+    }
+    67.5% {
+        opacity: 0;
+        transform: translate(-180%, 170%) rotate(15deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-266%, 256%) rotate(0deg);
+    }
+}
+
+/* ========================================
+   上下浮动呼吸动效
+   ======================================== */
+.float-breath {
+    animation: float-breath-anim 2s ease-in-out infinite;
+}
+
+@keyframes float-breath-anim {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-12px); /* 向上浮动12px，路径更短 */
+    }
+}
+
+/* ========================================
+   箭头出现动效
+   ======================================== */
+
+.animated-arrow {
+    display: block;
+    /* 循环淡入并伴随轻微下沉，起到指引作用 */
+    animation: arrow-appear-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes arrow-appear-pulse {
+    0%   { opacity: 0; transform: translateY(-15px); }
+    30%  { opacity: 1; transform: translateY(0); }
+    70%  { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(10px); }
+}
+
+/* ========================================
+   滚动触发动画样式
+   ======================================== */
+
+/* 初始状态：隐藏 + 轻微上移 */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    /* 移除此处的 transition，避免离开视口时看到回退动画 */
+}
+
+/* 显示状态：正常 + 回到原位，此时加上过渡动画 */
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+/* 覆盖 interactive-card 的 transform */
+.interactive-card.fade-in {
+    transform: scale(1) translateY(30px);
+}
+.interactive-card.fade-in.visible {
+    transform: scale(1) translateY(0);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.interactive-card.fade-in.visible:hover {
+    transform: scale(1.05);
+}
+
+/* 交错动画延迟：让相邻元素有轻微的延迟效果，增加层次感 */
+.fade-in:nth-child(odd) {
+    transition-delay: 0.1s;
+}
+
+.fade-in:nth-child(even) {
+    transition-delay: 0.2s;
+}

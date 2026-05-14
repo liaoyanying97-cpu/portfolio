@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的作品集</title>
+    <link rel="stylesheet" href="styles/style.css?v=20">
+</head>
+<body>
+    <div class="portfolio-container">
+        <!-- 第 1-4 页：大概率是封面及自我介绍部分 -->
+        <img src="assets/images/01.png" alt="01" class="full-img fade-in">
+        
+        <div class="relative-container">
+            <img src="assets/images/02.png?v=1" alt="02" class="full-img fade-in">
+            <!-- Top: 167/1393 ≈ 11.9885%, Left: 150/2400 = 6.25%, Width: 700/2400 ≈ 29.1666% -->
+            <div class="fade-in" style="position: absolute; top: 11.9885%; left: 6.25%; width: 29.1666%; z-index: 10;">
+                <img src="assets/images/02-资料卡.png?v=1" alt="02资料卡" class="hover-zoom-img" style="width: 100%; height: auto; transform-origin: center;">
+            </div>
+        </div>
+        
+        <!-- 新增 02-1 页面 -->
+        <div class="relative-container fade-in">
+            <!-- 底板 -->
+            <img src="assets/images/02-1.png" alt="02-1" class="full-img">
+            
+            <!-- 标签切图：底对齐，通过 z-index 控制层级：下(1) -> 中(2) -> 上(3) -->
+            <div class="labels-wrapper" style="position: absolute; bottom: 0; left: 0; width: 100%; height: 100%; pointer-events: none;">
+                <!-- 下层 -->
+                <img src="assets/images/下.png" alt="标签-下" class="full-img hover-lift-img" style="position: absolute; bottom: 0; left: 0; z-index: 1;">
+                <!-- 中层 -->
+                <img src="assets/images/中.png" alt="标签-中" class="full-img hover-lift-img" style="position: absolute; bottom: 0; left: 0; z-index: 2;">
+                <!-- 上层 -->
+                <img src="assets/images/上.png" alt="标签-上" class="full-img hover-lift-img" style="position: absolute; bottom: -10px; left: 0; z-index: 3;">
+            </div>
+        </div>
+        
+        <!-- 第 3 页：包含四个可点击放大的文件夹 -->
+        <div class="relative-container">
+            <img src="assets/images/03.png" alt="03" class="full-img fade-in">
+            <div class="overlay-cards">
+                <img src="assets/images/彩色文件夹01.png" alt="彩色文件夹1" class="interactive-card fade-in">
+                <img src="assets/images/彩色文件夹02.png" alt="彩色文件夹2" class="interactive-card fade-in" data-target="slice-04">
+                <img src="assets/images/彩色文件夹03.png" alt="彩色文件夹3" class="interactive-card fade-in" data-target="slice-014">
+                <img src="assets/images/彩色文件夹04.png" alt="彩色文件夹4" class="interactive-card fade-in" data-target="slice-020">
+            </div>
+        </div>
+
+        <div class="relative-container fade-in" id="slice-04">
+            <!-- 底层：04-底板 -->
+            <img src="assets/images/04.png?v=2" alt="04" class="full-img">
+            
+            <!-- 顶层：箭头动效 -->
+            <div class="arrow-wrapper" style="position: absolute; top: 0; left: 0; width: 100%; text-align: center; z-index: 10; pointer-events: none;">
+                <img src="assets/images/04-箭头.png?v=2" alt="箭头" class="animated-arrow" style="margin: 0 auto; max-width: 100%;">
+            </div>
+        </div>
+        
+        <div class="relative-container fade-in">
+            <img src="assets/images/05.png?v=3" alt="05" class="full-img">
+            <!-- 1691px / 3851px ≈ 43.9106% -->
+            <div class="charts-wrapper fade-in" style="position: absolute; top: 43.9106%; left: 0; width: 100%;">
+                <!-- 左侧距页面 150px (150/2400 = 6.25%)，保持图表自身宽度比例 (1077/2400 = 44.875%) -->
+                <img src="assets/images/05-图表1.png?v=3" alt="图表1" class="chart-reveal-left" style="position: absolute; left: 6.25%; top: 0; width: 44.875%; height: auto;">
+                <!-- 右侧距页面 150px (150/2400 = 6.25%)，保持图表自身宽度比例 (1075/2400 = 44.7916%) -->
+                <img src="assets/images/05-图表2.png?v=4" alt="图表2" class="chart-reveal-right" style="position: absolute; right: 6.25%; top: 0; width: 44.7916%; height: auto; animation-delay: 0.2s;">
+            </div>
+            <!-- 2609px / 3851px ≈ 67.7486% -->
+            <div class="chart3-wrapper fade-in" style="position: absolute; top: 67.7486%; left: 0; width: 100%; text-align: center;">
+                <!-- 1222px / 2400px ≈ 50.9166% -->
+                <img src="assets/images/05-图表3.png?v=1" alt="图表3" class="chart-reveal-right" style="display: inline-block; width: 50.9166%; height: auto;">
+            </div>
+        </div>
+        <div class="relative-container fade-in">
+            <!-- 底层：06-底板 -->
+            <img src="assets/images/06-底板.png?v=3" alt="06底板" class="full-img">
+            
+            <!-- 中层：企鹅动效 -->
+            <div class="penguin-wrapper" style="top: 0; left: 0; width: 100%; text-align: center; z-index: 5;">
+                <img src="assets/images/企鹅单独切图.png?v=3" alt="企鹅" class="floating-penguin" style="margin: 0 auto; max-width: 100%;">
+            </div>
+            
+            <!-- 顶层：06-文字遮挡层 -->
+            <img src="assets/images/06-文字.png?v=4" alt="06文字" class="full-img" style="position: absolute; top: 0; left: 0; z-index: 20; pointer-events: none;">
+        </div>
+        <div class="relative-container">
+            <img src="assets/images/07.png?v=5" alt="07" class="full-img fade-in">
+            
+            <div class="text-h5-wrapper fade-in" style="position: absolute; top: 6.6745%; right: 6.25%; width: 28.5416%;">
+                <img src="assets/images/07-h5-文字.png?v=1" alt="07文字" class="chart-reveal-right" style="width: 100%; height: auto; animation-delay: 0.3s;">
+            </div>
+            
+            <div class="h5-cards-wrapper">
+                <img src="assets/images/h5-1.png?v=2" alt="h5-1" class="h5-card fade-in">
+                <img src="assets/images/h5-2.png?v=2" alt="h5-2" class="h5-card fade-in">
+                <img src="assets/images/h5-3.png?v=2" alt="h5-3" class="h5-card fade-in">
+                <img src="assets/images/h5-4.png?v=2" alt="h5-4" class="h5-card fade-in">
+                <img src="assets/images/h5-5.png?v=2" alt="h5-5" class="h5-card fade-in">
+            </div>
+        </div>
+        <img src="assets/images/08.png" alt="08" class="full-img fade-in">
+
+        <!-- 针对 09-011 设置专属背景色，防止透明度动画透出白底 -->
+        <div style="background-color: #FFF6E9; width: 100%;">
+            <div class="relative-container fade-in">
+                <!-- 底层：09-底板 -->
+                <img src="assets/images/09.png?v=6" alt="09" class="full-img">
+                
+                <!-- 顶层：箭头动效 -->
+                <div class="arrow-wrapper" style="position: absolute; top: 0; left: 0; width: 100%; text-align: center; z-index: 10; pointer-events: none;">
+                    <img src="assets/images/09-箭头.png?v=3" alt="09箭头" class="animated-arrow" style="margin: 0 auto; max-width: 100%;">
+                </div>
+
+                <!-- 顶层：花朵呼吸动效 -->
+                <!-- 花1: Top: 82/3245 ≈ 2.527%, Left: 1258/2400 ≈ 52.4167%, Width: 231/2400 ≈ 9.625% -->
+                <img src="assets/images/09-花-1.png?v=2" alt="09花1" class="flower-sway" style="position: absolute; top: 2.527%; left: 52.4167%; width: 9.625%; height: auto; z-index: 10;">
+                
+                <!-- 花2: Top: 318/3245 ≈ 9.8%, Left: 1353/2400 = 56.375%, Width: 286/2400 ≈ 11.9167% -->
+                <img src="assets/images/09-花-2.png?v=2" alt="09花2" class="flower-sway" style="position: absolute; top: 9.8%; left: 56.375%; width: 11.9167%; height: auto; z-index: 10; animation-delay: 0.5s;">
+                
+                <!-- 花3: Top: 147/3245 ≈ 4.53%, Left: 1650/2400 = 68.75%, Width: 369/2400 = 15.375% -->
+                <img src="assets/images/09-花-3.png?v=2" alt="09花3" class="flower-sway" style="position: absolute; top: 4.53%; left: 68.75%; width: 15.375%; height: auto; z-index: 10; animation-delay: 1s;">
+
+                <!-- 飘落花朵: Top: 400/3245 ≈ 12.3266%, Left: 1320/2400 = 55%, Width: 292/2400 ≈ 12.1667% -->
+                <img src="assets/images/09-花-4.png?v=1" alt="09花4" class="falling-petal" style="position: absolute; top: 12.3266%; left: 55%; width: 12.1667%; height: auto; z-index: 10;">
+            </div>
+        <div class="relative-container">
+            <img src="assets/images/010.png?v=1" alt="10" class="full-img fade-in">
+            <!-- Top: 259/2691 ≈ 9.6246%, Width: 2100/2400 = 87.5%, Left: 6.25% -->
+            <div class="chart10-wrapper fade-in" style="position: absolute; top: 9.6246%; left: 6.25%; width: 87.5%; z-index: 10;">
+                <img src="assets/images/010-图表.png?v=1" alt="10图表" class="chart-reveal-bottom" style="width: 100%; height: auto; display: block;">
+            </div>
+        </div>
+        <div class="relative-container">
+            <img src="assets/images/011.png?v=1" alt="11" class="full-img fade-in">
+            
+            <!-- Top: 2343/3943 ≈ 59.4217% -->
+            <div class="scrollable-h5-wrapper fade-in" style="position: absolute; top: 59.4217%; left: 0; width: 100%; overflow-x: auto; display: flex; align-items: center; box-sizing: border-box; z-index: 10; padding: 20px 0; margin-top: -20px;">
+                <!-- 左侧 150px (6.25%) 的占位 -->
+                <div style="flex-shrink: 0; width: 6.25%;"></div>
+                
+                <!-- 拆分为四张切图，使用 margin-right 实现 50px(2.0833%) 间距 -->
+               <img src="assets/images/011-h5-1.png?v=2" alt="11-h5-1" class="hover-zoom-img" style="flex-shrink: 0; width: 25.8333%; height: auto; display: block; pointer-events: auto; margin-right: 2.0833%;">
+               <img src="assets/images/011-h5-2.png?v=2" alt="11-h5-2" class="hover-zoom-img" style="flex-shrink: 0; width: 25.8333%; height: auto; display: block; pointer-events: auto; margin-right: 2.0833%;">
+               <img src="assets/images/011-h5-3.png?v=2" alt="11-h5-3" class="hover-zoom-img" style="flex-shrink: 0; width: 25.8333%; height: auto; display: block; pointer-events: auto; margin-right: 2.0833%;">
+               <img src="assets/images/011-h5-4.png?v=2" alt="11-h5-4" class="hover-zoom-img" style="flex-shrink: 0; width: 25.8333%; height: auto; display: block; pointer-events: auto;">
+                
+                <!-- 右侧 150px (6.25%) 的占位 -->
+                <div style="flex-shrink: 0; width: 6.25%;"></div>
+            </div>
+        </div>
+        </div>
+        <div class="relative-container">
+            <img src="assets/images/012.png?v=1" alt="12" class="full-img fade-in">
+            <!-- Top: 1644/4298 ≈ 38.2503%, Left: 6.25%, Right: 6.25%, Width: 600/2400 = 25% -->
+            <div class="chart12-wrapper fade-in" style="position: absolute; top: 38.2503%; left: 0; width: 100%; height: 0; z-index: 10;">
+                <img src="assets/images/012-图表-左1.png?v=1" alt="12图表左1" class="chart-reveal-top" style="position: absolute; left: 6.25%; width: 25%; height: auto; animation-duration: 0.4s;">
+                <img src="assets/images/012-图表-右1.png?v=1" alt="12图表右1" class="chart-reveal-top" style="position: absolute; right: 6.25%; width: 25%; height: auto; animation-duration: 0.4s;">
+            </div>
+            
+            <!-- Top: 3932/4298 ≈ 91.4844%, Left: 6.25%, Right: 6.25%, Width: 2100/2400 = 87.5% -->
+            <div class="chart12-progress-wrapper fade-in" style="position: absolute; top: 91.4844%; left: 6.25%; width: 87.5%; z-index: 10;">
+                <img src="assets/images/012-图表-进度.png?v=1" alt="12进度" class="chart-reveal-right" style="width: 100%; height: auto; display: block;">
+            </div>
+        </div>
+
+        <!-- 第 13 页：需要有点击跳转功能 -->
+        <div class="link-container fade-in">
+            <a href="https://isux-easydesign.pages.woa.com/QQEasyH5.html" target="_blank" class="clickable-image">
+                <img src="assets/images/013.png" alt="13 带链接">
+                <!-- 给整张图加上遮罩层或者直接让图片被a标签包裹，由于是切图，点击整张图跳转最合适 -->
+            </a>
+        </div>
+
+        <!-- 针对 014-019 设置专属深色背景，防止透明度动画透出白底 -->
+        <div style="background-color: #060026; width: 100%;">
+            <div class="relative-container">
+                <img src="assets/images/014.png?v=2" alt="14" class="full-img fade-in" id="slice-014">
+                
+                <!-- Top: 1543/2419 ≈ 63.7867%, 左右边距4px，切图宽928px -->
+                <div class="chart14-wrapper fade-in" style="position: absolute; top: 63.7867%; left: 0; width: 100%; height: 0; z-index: 10;">
+                    <!-- 左侧图表从左至右出现 -->
+                    <img src="assets/images/014-图表-左.png?v=1" alt="14图表左" class="chart-reveal-right" style="position: absolute; left: 0.1667%; width: 38.6667%; height: auto; animation-delay: 0.1s;">
+                    
+                    <!-- 右侧图表从右至左出现 -->
+                    <img src="assets/images/014-图表-右.png?v=1" alt="14图表右" class="chart-reveal-left" style="position: absolute; right: 0.1667%; width: 38.6667%; height: auto; animation-delay: 0.1s;">
+                </div>
+            </div>
+            <img src="assets/images/015.png" alt="15" class="full-img fade-in">
+            <img src="assets/images/016.png" alt="16" class="full-img fade-in">
+            <img src="assets/images/017.png" alt="17" class="full-img fade-in">
+            <img src="assets/images/018.png" alt="18" class="full-img fade-in">
+            <img src="assets/images/019.png" alt="19" class="full-img fade-in">
+        </div>
+
+        <!-- 针对 020-023 设置专属背景色，防止透明度动画透出白底 -->
+        <div style="background-color: #E9F4FF; width: 100%;">
+            <div class="relative-container fade-in" id="slice-020">
+                <img src="assets/images/020.png?v=1" alt="20" class="full-img">
+                
+                <!-- Icon切图：上下浮动呼吸动效 -->
+                <!-- Top: 232/2374 ≈ 9.7725%, Right: 0, Width: 1116/2400 = 46.5% -->
+                <img src="assets/images/020-icon.png?v=1" alt="20-icon" class="float-breath" style="position: absolute; top: 9.7725%; right: 0; width: 46.5%; height: auto; z-index: 10;">
+            </div>
+            <div class="relative-container">
+                <img src="assets/images/021.png?v=1" alt="21" class="full-img fade-in">
+                <!-- Top: 597/3093 ≈ 19.3016%, Left: 150/2400 = 6.25%, Width: 1983/2400 ≈ 82.625% -->
+                <div class="chart21-wrapper fade-in" style="position: absolute; top: 19.3016%; left: 6.25%; width: 82.625%; z-index: 10;">
+                    <img src="assets/images/021-图表-1.png?v=1" alt="21图表1" class="chart-reveal-top" style="width: 100%; height: auto; display: block;">
+                </div>
+            </div>
+            <img src="assets/images/022.png" alt="22" class="full-img fade-in">
+            <img src="assets/images/023.png" alt="23" class="full-img fade-in">
+        </div>
+
+        <!-- 针对 024-027 设置专属深色背景，防止透明度动画透出白底 -->
+        <div style="background-color: #001733; width: 100%;">
+            <img src="assets/images/024.png" alt="24" class="full-img fade-in">
+            <img src="assets/images/025.png" alt="25" class="full-img fade-in">
+            
+            <div class="relative-container fade-in">
+                <img src="assets/images/026.png?v=2" alt="26" class="full-img">
+                
+                <div class="chart26-wrapper fade-in" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; pointer-events: none;">
+                    <!-- 箭头1: Top 1217px (1217/4367 ≈ 27.8681%), Width 202px (202/2400 ≈ 8.4166%) -->
+                    <div style="position: absolute; top: 27.8681%; left: 50%; transform: translateX(-50%); width: 8.4166%;">
+                        <img src="assets/images/箭头1.png" alt="箭头1" class="animated-arrow" style="width: 100%; height: auto;">
+                    </div>
+                    
+                    <!-- 箭头2: Top 2105px (2105/4367 ≈ 48.2024%), Width 270px (270/2400 = 11.25%) -->
+                    <div style="position: absolute; top: 48.2024%; left: 50%; transform: translateX(-50%); width: 11.25%;">
+                        <img src="assets/images/箭头2.png" alt="箭头2" class="animated-arrow" style="width: 100%; height: auto;">
+                    </div>
+                </div>
+            </div>
+            
+            <img src="assets/images/027.png" alt="27" class="full-img fade-in">
+        </div>
+
+        <img src="assets/images/028.png" alt="28" class="full-img fade-in">
+    </div>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html>
