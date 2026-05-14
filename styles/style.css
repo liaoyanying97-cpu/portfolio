@@ -332,17 +332,17 @@ body {
         opacity: 1;
         transform: translate(-30px, 40px) rotate(10deg);
     }
-    37.5% {
-        opacity: 1;
-        transform: translate(-80px, 120px) rotate(-5deg);
+    25% {
+        opacity: 1; /* 保持可见到动画的 25% */
+        transform: translate(-50px, 75px) rotate(2deg);
     }
-    67.5% {
-        opacity: 0;
-        transform: translate(-150px, 250px) rotate(15deg);
+    45% {
+        opacity: 0; /* 提早到 45% 的时候就完全消失（原来是 67.5% 才消失） */
+        transform: translate(-100px, 160px) rotate(-10deg);
     }
     100% {
-        opacity: 0;
-        transform: translate(-200px, 350px) rotate(0deg);
+        opacity: 0; /* 剩下的时间保持隐藏 */
+        transform: translate(-200px, 350px) rotate(15deg);
     }
 }
 
