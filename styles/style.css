@@ -326,23 +326,23 @@ body {
 @keyframes petal-fall {
     0% {
         opacity: 0;
-        transform: translate(0, -10%) rotate(-10deg);
+        transform: translate(0, -10px) rotate(-10deg);
     }
     15% {
         opacity: 1;
-        transform: translate(-40%, 30%) rotate(10deg);
+        transform: translate(-30px, 40px) rotate(10deg);
     }
     37.5% {
         opacity: 1;
-        transform: translate(-100%, 90%) rotate(-5deg);
+        transform: translate(-80px, 120px) rotate(-5deg);
     }
     67.5% {
         opacity: 0;
-        transform: translate(-180%, 170%) rotate(15deg);
+        transform: translate(-150px, 250px) rotate(15deg);
     }
     100% {
         opacity: 0;
-        transform: translate(-266%, 256%) rotate(0deg);
+        transform: translate(-200px, 350px) rotate(0deg);
     }
 }
 
