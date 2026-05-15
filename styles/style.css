@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 body {
     background-color: #f5f5f5; /* 假设背景是浅灰色，视设计稿而定，也可以是白色 */
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -24,6 +29,7 @@ body {
 /* 默认图片宽度占据 100%，以保证拼接没有缝隙 */
 .full-img {
     width: 100%;
+    height: auto;
     display: block; /* 消除 img 的底部默认间隙 */
 }
 
@@ -68,8 +74,13 @@ body {
     padding: 0 4%; /* 两侧的安全边距 */
 }
 
+.interactive-card-picture {
+    width: 23%;
+    display: block;
+}
+
 .interactive-card {
-    width: 23%; /* 卡片宽度比例 */
+    width: 100%; /* 卡片占满 picture 容器 */
     height: auto;
     cursor: pointer;
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -89,7 +100,7 @@ body {
         gap: 1%;
         padding: 0 2%;
     }
-    .interactive-card {
+    .interactive-card-picture {
         width: 24%;
     }
 }
@@ -98,6 +109,17 @@ body {
 @media (max-width: 767px) {
     .portfolio-container {
         box-shadow: none;
+    }
+    
+    .overlay-cards {
+        gap: 0.5%;
+        padding: 0;
+    }
+    .interactive-card-picture {
+        width: 25%;
+    }
+    .interactive-card.fade-in.visible:hover {
+        transform: scale(1) translateY(0); /* 取消放大悬停 */
     }
     
     /* 缩小移动端滑动触发动画的位移，防止动画幅度显得过于夸张 */
@@ -168,10 +190,14 @@ body {
     padding: 0;
 }
 
-.h5-card {
-    /* 单张图 500px，相对于 2700px 宽度的比例：500 / 2700 = 18.5185% */
+.h5-card-picture {
     flex: 0 0 18.5185%;
     width: 18.5185%;
+    display: block;
+}
+
+.h5-card {
+    width: 100%;
     height: auto;
     cursor: pointer;
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -452,4 +478,57 @@ body {
 
 .fade-in:nth-child(even) {
     transition-delay: 0.2s;
+}
+/* ====== 返回顶部按钮 ====== */
+.back-to-top {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.back-to-top:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* 移动端适配返回顶部按钮 */
+@media (max-width: 767px) {
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+    }
+    .back-to-top svg {
+        width: 20px;
+        height: 20px;
+    }
 }

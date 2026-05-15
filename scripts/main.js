@@ -54,4 +54,28 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // ========================================
+    // 返回顶部按钮逻辑
+    // ========================================
+    const backToTopBtn = document.getElementById('back-to-top');
+    if (backToTopBtn) {
+        // 监听滚动，控制按钮显示/隐藏
+        window.addEventListener('scroll', () => {
+            // 当页面向下滚动超过 500px 时显示按钮，否则隐藏
+            if (window.scrollY > 500) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        // 点击按钮，平滑回到顶部
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
 });
