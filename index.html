@@ -19,6 +19,9 @@
 img {
     max-width: 100%;
     height: auto;
+    /* 强制浏览器在对高清大图进行缩放时，使用更锐利、更高质量的算法（对含有文字的UI设计稿特别有效） */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
 }
 
 body {
